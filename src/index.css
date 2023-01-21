@@ -1,13 +1,510 @@
+:root {
+  --black: #010001;
+  --white: #ffffff;
+  --mainFont: "Open Sauce One";
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  background-color: var(--white);
+  font-family: var(--mainFont);
+  box-sizing: border-box;
+  background-color: "#ffffff";
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.componentDiv {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.headerContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin-top: 30px;
+}
+
+.headerContainer.fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 2000;
+}
+
+.HeaderinBannerContainer {
+  width: 100%;
+}
+
+.header90posto {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 90%;
+}
+
+.logo a {
+  font-size: 1.2rem;
+  letter-spacing: 0.5rem;
+  color: black;
+  text-decoration: none;
+  font-weight: 700;
+  padding: 20px;
+}
+
+.nav {
+  width: 25px;
+  padding: 20px;
+}
+
+.nav:hover {
+  cursor: pointer;
+}
+
+.nav span {
+  margin-bottom: 0.3rem;
+  background-color: black;
+  height: 2px;
+  width: 100%;
+  display: block;
+}
+
+/* -------------- BANNER ---------------------*/
+
+.bannerContainer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100vw;
+  height: 50vh;
+  flex-direction: column;
+}
+
+.bannerText {
+  z-index: 10;
+  color: black;
+  font-size: 38px;
+  width: 90%;
+  margin-top: 100px;
+}
+
+.bannerMoreAboutUs {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.bannerMoreAboutUs p {
+  margin-right: 26px;
+  font-size: 24px;
+}
+
+.bannerMoreAboutUs svg {
+  width: 30px;
+  height: 30px;
+  border: 2px solid rgb(0, 0, 0);
+  border-radius: 50%;
+  padding: 10px;
+}
+
+/*---------------- ABOUT ME CONTAINER
+
+
+background: radial-gradient(
+    circle at left center,
+    transparent,
+    #f0f0f0,
+    #c8dcd1,
+    #f3d99c
+  );
+
+
+-----------------------------*/
+
+.aboutContainer {
+  display: flex;
+  width: 100vw;
+  justify-content: space-between;
+  z-index: 20;
+}
+
+.aboutMeLeft {
+  width: 50%;
+  background-color: lightblue;
+}
+
+.aboutMeRight {
+  width: 50%;
+  background-color: lightblue;
+}
+
+.hello {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 40px;
+  line-height: 47px;
+  color: rgb(0, 0, 0);
+  margin-top: 20px;
+}
+
+.smallText {
+  margin-top: 3.5rem;
+  margin-bottom: 3.5rem;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+}
+
+.contactMe {
+  padding: 15px 25px;
+  margin-right: 10px;
+  border-radius: 30px;
+  border: 0;
+  background-color: #1d1d1d;
+  color: white;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.contactMe:hover {
+  background-color: #353434;
+  cursor: pointer;
+}
+
+.circle {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: rgb(255, 255, 255);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px;
+}
+
+.circle:hover {
+  cursor: pointer;
+}
+
+.socialIcons {
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.gitCircle:hover {
+  background-color: #24292f;
+}
+
+.gitCircle:hover .github {
+  color: rgb(255, 255, 255);
+}
+
+.instaCircle:hover {
+  background-color: #fa249e;
+}
+
+.instaCircle:hover .instagram {
+  color: white;
+}
+
+.faceCircle:hover {
+  background-color: #1877f2;
+}
+
+.faceCircle:hover .facebook {
+  color: white;
+}
+
+.twittCircle:hover {
+  background-color: #1d9bf0;
+}
+
+.twittCircle:hover .twitter {
+  color: white;
+}
+
+/*---------------- PROJECTS -----------------------------*/
+
+.projectContainer {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  width: 100vw;
+  z-index: 20;
+  height: 50vh;
+}
+
+.case {
+  position: relative;
+  width: 100%;
+  height: 50vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.overlay {
+  position: absolute;
+  background-color: rgb(9, 0, 0);
+  opacity: 0.53;
+  height: 100%;
+  width: 100%;
+  z-index: 100;
+  top: 0;
+  left: 0;
+}
+
+.case:hover {
+  cursor: pointer;
+}
+
+.case-image {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.case-image img {
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+}
+
+.caseDetails {
+  position: absolute;
+  top: 50%;
+  color: white;
+  z-index: 200;
+  left: 10%;
+}
+
+/*---------------- FOOTER -----------------------------*/
+
+.footerContainer {
+  width: 1000px;
+  border: 1px solid red;
+  margin-top: 20px;
+  border-radius: 25px;
+  z-index: 20;
+}
+
+.footerPadding {
+  padding: 20px;
+}
+
+.footerHeading {
+  font-size: 32px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.footerP {
+  margin-bottom: 10px;
+}
+
+.footerEmail {
+  margin-bottom: 20px;
+}
+
+/*---------------- TIMELINE -----------------------------*/
+
+.timelineContainer {
+  position: relative;
+  border: 1px solid red;
+  margin-top: 20px;
+  background-color: transparent;
+  z-index: -3;
+  border-radius: 25px;
+}
+
+.timelineItem {
+  width: 1000px;
+  display: grid;
+  grid-template-columns: 1fr 160px 1fr;
+  gap: 0;
+  margin-bottom: 200px;
+}
+
+.margintop {
+  margin-top: 100px;
+}
+
+.timelineLeft {
+  text-align: right;
+}
+
+.timelineRight {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.timelineCenter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.timelineDate {
+  font-size: 48px;
+  color: black;
+}
+
+.timelineCircle {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background-color: rgb(255, 255, 255);
+  z-index: 10;
+}
+
+.timelineContent {
+  color: black;
+}
+
+.timelineProgress {
+  width: 2px;
+  background-color: rgb(149, 149, 150);
+  height: 100%;
+  position: absolute;
+  left: 49.9%;
+  z-index: -2;
+}
+
+.timelineBar {
+  width: 2px;
+  background-color: white;
+  height: 50vh;
+  position: fixed;
+  bottom: 50vh;
+  z-index: -1;
+}
+
+.timelineTitle {
+  color: white;
+  font-size: 36px;
+  text-align: center;
+  z-index: 20;
+  margin-top: 100px;
+  margin-bottom: 100px;
+}
+
+/*---------------- OVERLAY INTRO -----------------------------*/
+
+.top {
+  position: absolute;
+  height: 50vh;
+  width: 100vw;
+  z-index: 100;
+  top: 0;
+  left: 0;
+}
+
+.bottom {
+  position: absolute;
+  height: 50vh;
+  width: 100vw;
+  z-index: 100;
+  bottom: 0;
+  left: 0;
+}
+
+.intro-overlay {
+  width: 100vw;
+}
+
+.overlay-top:first-child {
+  position: absolute;
+  height: 100%;
+  width: 33.3333%;
+  background-color: rgb(0, 0, 0);
+  bottom: 0;
+  left: 0;
+}
+
+.overlay-top:nth-child(2) {
+  position: absolute;
+  height: 100%;
+  width: 33.3333%;
+  background-color: rgb(0, 0, 0);
+  bottom: 0;
+  top: 0;
+  left: 33.3333%;
+}
+
+.overlay-top:nth-child(3) {
+  position: absolute;
+  height: 100%;
+  width: 33.3333%;
+  background-color: rgb(0, 0, 0);
+  bottom: 0;
+  top: 0;
+  left: 66.6666%;
+}
+
+.overlay-bottom {
+  position: absolute;
+  height: 100%;
+  width: 33.333%;
+  background-color: rgb(0, 0, 0);
+  bottom: 0;
+  top: 0;
+  right: 66.6666%;
+}
+
+.overlay-bottom:nth-child(2) {
+  right: 33.333%;
+}
+
+.overlay-bottom:nth-child(3) {
+  right: 0;
+}
+
+.hiddenAnimation {
+  height: 0;
+  position: absolute;
+  top: 0;
+  left: 33.3333%;
+}
+
+.hiddenAnimationButtom {
+  height: 0;
+  position: absolute;
+  bottom: 0;
+  left: 33.3333%;
+}
+
+/*------------------NAVIGATION-----------------*/
+
+.navigation {
+  height: 50vh;
+  width: 100%;
+  top: -1px;
+  position: fixed;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: rgb(255, 243, 216);
+  z-index: 1000;
+}
+
+.content.push-down {
+  position: relative;
+  top: 50vh;
 }
