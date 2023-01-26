@@ -1,0 +1,137 @@
+import { useContext } from "react";
+import Context from "../Context/Context";
+import FacebookIcon from "@mui/icons-material/Facebook";
+import InstagramIcon from "@mui/icons-material/Instagram";
+import GitHubIcon from "@mui/icons-material/GitHub";
+import TwitterIcon from "@mui/icons-material/Twitter";
+import { motion } from "framer-motion";
+
+const Contact = () => {
+  const { contactOpened } = useContext(Context);
+
+  return (
+    <>
+      {contactOpened ? (
+        <div className="componentDiv">
+          <div className="contactContainer">
+            <div className="contactFormContainer">
+              <div className="contactHeading">
+                <h2 className="contactHeadingH2">Contact</h2>
+              </div>
+              <div className="contactForm">
+                <div className="contactFormLeft">
+                  <motion.div
+                    initial={{ x: "-200px", opacity: 0 }}
+                    animate={{ x: 0, opacity: 1 }}
+                    transition={{
+                      duration: 1.5,
+                      type: "spring",
+                      stiffness: 100,
+                    }}
+                    className="contactPhone"
+                  >
+                    <div className="phoneIcon circleBackground">
+                      <span class="material-symbols-outlined">call</span>
+                    </div>
+                    <p>095 7206 712</p>
+                  </motion.div>
+                  <motion.div
+                    className="contactEmail"
+                    initial={{ x: "200px", opacity: 0 }}
+                    animate={{ x: 0, opacity: 1 }}
+                    transition={{
+                      duration: 1.5,
+                      type: "spring",
+                      stiffness: 100,
+                    }}
+                  >
+                    <div className="emailIcon circleBackground">
+                      <span class="material-symbols-outlined">
+                        contact_mail
+                      </span>
+                    </div>
+                    <p>antonio@gmail.com</p>
+                  </motion.div>
+                  <motion.div
+                    className="contactLocation"
+                    initial={{ x: "-200px", opacity: 0 }}
+                    animate={{ x: 0, opacity: 1 }}
+                    transition={{
+                      duration: 1.5,
+                      type: "spring",
+                      stiffness: 140,
+                    }}
+                  >
+                    <div className="locationIcon circleBackground">
+                      <span class="material-symbols-outlined">location_on</span>
+                    </div>
+                    <p>Split, Croatia</p>
+                  </motion.div>
+                  <motion.div
+                    className="socialIcons"
+                    initial={{ x: "-200px", opacity: 0 }}
+                    animate={{ x: 0, opacity: 1 }}
+                    transition={{
+                      duration: 1.5,
+                      type: "spring",
+                      stiffness: 140,
+                    }}
+                  >
+                    <div className="facebook">
+                      <div className="circleBackground facebookHover">
+                        <FacebookIcon />
+                      </div>
+                    </div>
+                    <div className="instagram">
+                      <div className="circleBackground instagramHover">
+                        <InstagramIcon />
+                      </div>
+                    </div>
+                    <div className="github">
+                      <div className="circleBackground githubHover">
+                        <GitHubIcon />
+                      </div>
+                    </div>
+                    <div className="twitter">
+                      <div className="circleBackground twitterHover">
+                        <TwitterIcon />
+                      </div>
+                    </div>
+                  </motion.div>
+                </div>
+                <div className="contactFormRight">
+                  <div className="yourNameInput">
+                    <label htmlFor="name" className="contactLabel">
+                      Your name
+                    </label>
+                    <input type="text" id="name" className="contactInput" />
+                  </div>
+                  <div className="yourEmailInput">
+                    <label htmlFor="email" className="contactLabel">
+                      Your email
+                    </label>
+                    <input type="text" id="email" className="contactInput" />
+                  </div>
+                  <div className="yourTextInput">
+                    <label htmlFor="message" className="contactLabel">
+                      Your message
+                    </label>
+                    <input
+                      type="text"
+                      id="message"
+                      className="contactInputMessage"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      ) : (
+        <></>
+      )}
+    </>
+  );
+};
+
+export default Contact;

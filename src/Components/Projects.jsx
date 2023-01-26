@@ -28,7 +28,10 @@ const Projects = () => {
         {projects.map((project) => (
           <div className="case" key={project.id}>
             <div className="case-image">
-              <img src={require(`../assets/${project.img}.png`)} />
+              <img
+                className="scale-img"
+                src={require(`../assets/${project.img}.png`)}
+              />
             </div>
             <div className="overlay"></div>
             <div className="caseDetails">

@@ -17,8 +17,8 @@ const Banner = () => {
             <p>junior fronted developer.</p>
           </div>
           <div className="bannerMoreAboutUs">
-            <p>More about me</p>
-            <ArrowRight />
+            <p>Download CV</p>
+            <ArrowRight className="arrowRightHover" />
           </div>
         </div>
       </div>
