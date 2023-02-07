@@ -2,6 +2,7 @@ import { useEffect, useState, useContext } from "react";
 import { ReactComponent as ArrowRight } from "../assets/arrow-right.svg";
 import Header2 from "./Header2";
 import Context from "../Context/Context";
+import LoadingDots from "../Components/LoadingDots";
 
 const Banner = () => {
   //context data
@@ -14,7 +15,10 @@ const Banner = () => {
         <div className="bannerText">
           <div className="bannerMessage">
             <p>Hello, I am Antonio</p>
-            <p>junior fronted developer.</p>
+            <p>
+              {`junior frontend developer`}
+              <LoadingDots />
+            </p>
           </div>
           <div className="bannerMoreAboutUs">
             <p>Download CV</p>

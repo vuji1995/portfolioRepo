@@ -1,18 +1,22 @@
 import IntroOverlay from "../Components/IntroOverlay";
 import Banner from "../Components/Banner";
 import Projects from "../Components/Projects";
-import NavigationMenu from "../Components/NavigationMenu";
-import Contact from "./Contact";
-import AboutMe from "./AboutMe";
-import Context from "../Context/Context";
-import ProjectsPage from "./ProjectPage";
-import TransitionPage from "../Components/TransitionPage";
 import gsap from "gsap";
+import Context from "../Context/Context";
+import Header2 from "../Components/Header2";
+import NavigationMenu from "../Components/NavigationMenu";
+import SideMenu from "../Components/SideMenu";
+import TransitionPage from "../Components/TransitionPage";
 import { useEffect, useState, useContext } from "react";
 
 const tl = gsap.timeline();
 
 const homeAnimation = (removeTopAndBootom) => {
+  const overlayTop = document.querySelector(".overlay-top");
+  const overlayBottom = document.querySelector(".overlay-bottom");
+
+  if (!overlayTop || !overlayBottom) return;
+
   tl.to(".overlay-top", 1.6, {
     height: 0,
     ease: "expo.inOut",
@@ -49,11 +53,10 @@ const Home = () => {
         <Banner />
         <Projects />
       </div>
+      <Header2 />
       <NavigationMenu />
-      <Contact />
-      <AboutMe />
+      <SideMenu />
       <TransitionPage />
-      <ProjectsPage />
     </div>
   );
 };

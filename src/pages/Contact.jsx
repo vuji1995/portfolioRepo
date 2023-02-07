@@ -1,15 +1,16 @@
 import { useContext } from "react";
 import Context from "../Context/Context";
-import FacebookIcon from "@mui/icons-material/Facebook";
-import InstagramIcon from "@mui/icons-material/Instagram";
-import GitHubIcon from "@mui/icons-material/GitHub";
-import TwitterIcon from "@mui/icons-material/Twitter";
+import SideMenuButton from "../Components/SideMenuButton";
 import { motion } from "framer-motion";
 import * as React from "react";
 import { useState } from "react";
+import { toast } from "react-toastify";
+import { useRef } from "react";
+import emailjs from "@emailjs/browser";
 
 const Contact = () => {
-  const { contactOpened } = useContext(Context);
+  const { contactOpened, setShowSideMenu, showSideMenu, goToSocialMedia } =
+    useContext(Context);
   const [fieldValue, setFieldValue] = useState({
     name: "",
     message: "",
@@ -24,15 +25,11 @@ const Contact = () => {
     }));
   };
 
-  const goToSocialMedia = (e) => {
-    let socialMedia = e.target.textContent;
-    socialMedia = socialMedia.toLowerCase();
-    window.open(`https://www.${socialMedia}.com`);
-  };
-
   const copyContactDetails = (e) => {
     let copiedText = e.target.textContent;
     navigator.clipboard.writeText(copiedText);
+    let copyTextDisplay = e.target.getAttribute(`name`);
+    toast.success(`${copyTextDisplay} is copied!`);
   };
 
   const sendMessage = () => {
@@ -46,22 +43,52 @@ const Contact = () => {
 
     if (fieldValue.name.length < 1) {
       console.log(`Unesite ime!`);
+      toast.error(`Enter your name!`);
       error = true;
     }
 
     if (fieldValue.message.length < 4) {
       console.log(`Unesite poruku!`);
+      toast.error(`Enter your message!`);
       error = true;
     }
 
     if (!isEmailValid(fieldValue.email)) {
-      console.log(`Unesite ispravan email!`);
+      toast.error(`Enter valid email adress!`);
       error = true;
     }
 
     if (!error) {
-      console.log(`Mail je poslan!`);
+      toast.success(`Email has been sent!`);
+      setFieldValue({
+        name: "",
+        message: "",
+        email: "",
+        organization: "",
+      });
     }
+  };
+
+  const form = useRef();
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+
+    emailjs
+      .sendForm(
+        "service_g1x78am",
+        "template_vg0km1j",
+        form.current,
+        "JcaiKdWRsyxKOHrOQ"
+      )
+      .then(
+        (result) => {
+          console.log(result.text);
+        },
+        (error) => {
+          console.log(error.text);
+        }
+      );
   };
 
   return (
@@ -75,120 +102,123 @@ const Contact = () => {
                   Let's start a <br />
                   project together
                 </div>
-                <div className="contactField firstChild">
-                  <div className="fieldWrapper">
-                    <div className="contactFieldTop">
-                      <span className="fieldNumber">01</span>
-                    </div>
-                    <div className="contactFieldButtom">
-                      <p
-                        className={
-                          fieldValue.name.length > 0
-                            ? "fieldQuestionWhite"
-                            : "fieldQuestion"
-                        }
-                      >
-                        What is your name?
-                      </p>
-                      <input
-                        type="text"
-                        className="contactInput"
-                        placeholder="John Doe"
-                        name="name"
-                        value={fieldValue.name}
-                        onChange={inputsValue}
-                      />
-                    </div>
-                  </div>
-                </div>
-                <div className="contactField">
-                  <div className="fieldWrapper">
-                    <div className="contactFieldTop">
-                      <span className="fieldNumber">02</span>
-                    </div>
-                    <div className="contactFieldButtom">
-                      <p
-                        className={
-                          fieldValue.email.length > 0
-                            ? "fieldQuestionWhite"
-                            : "fieldQuestion"
-                        }
-                      >
-                        What is your email?
-                      </p>
-                      <input
-                        type="text"
-                        className="contactInput"
-                        placeholder="john@doe.com"
-                        name="email"
-                        value={fieldValue.email}
-                        onChange={inputsValue}
-                      />
+                <form onSubmit={sendEmail} ref={form}>
+                  <div className="contactField firstChild">
+                    <div className="fieldWrapper">
+                      <div className="contactFieldTop">
+                        <span className="fieldNumber">01</span>
+                      </div>
+                      <div className="contactFieldButtom">
+                        <p
+                          className={
+                            fieldValue.name.length > 0
+                              ? "fieldQuestionWhite"
+                              : "fieldQuestion"
+                          }
+                        >
+                          What is your name?
+                        </p>
+                        <input
+                          type="text"
+                          className="contactInput"
+                          placeholder="John Doe"
+                          name="name"
+                          value={fieldValue.name}
+                          onChange={inputsValue}
+                        />
+                      </div>
                     </div>
                   </div>
-                </div>
-                <div className="contactField">
-                  <div className="fieldWrapper">
-                    <div className="contactFieldTop">
-                      <span className="fieldNumber">03</span>
-                    </div>
-                    <div className="contactFieldButtom">
-                      <p
-                        className={
-                          fieldValue.organization.length > 0
-                            ? "fieldQuestionWhite"
-                            : "fieldQuestion"
-                        }
-                      >
-                        What's the name of your organization?
-                      </p>
-                      <input
-                        type="text"
-                        className="contactInput"
-                        placeholder="john & doe"
-                        name="organization"
-                        value={fieldValue.organization}
-                        onChange={inputsValue}
-                      />
+                  <div className="contactField">
+                    <div className="fieldWrapper">
+                      <div className="contactFieldTop">
+                        <span className="fieldNumber">02</span>
+                      </div>
+                      <div className="contactFieldButtom">
+                        <p
+                          className={
+                            fieldValue.email.length > 0
+                              ? "fieldQuestionWhite"
+                              : "fieldQuestion"
+                          }
+                        >
+                          What is your email?
+                        </p>
+                        <input
+                          type="text"
+                          className="contactInput"
+                          placeholder="john@doe.com"
+                          name="email"
+                          value={fieldValue.email}
+                          onChange={inputsValue}
+                        />
+                      </div>
                     </div>
                   </div>
-                </div>
-                <div className="contactField">
-                  <div className="fieldWrapper">
-                    <div className="contactFieldTop">
-                      <span className="fieldNumber">04</span>
+                  <div className="contactField">
+                    <div className="fieldWrapper">
+                      <div className="contactFieldTop">
+                        <span className="fieldNumber">03</span>
+                      </div>
+                      <div className="contactFieldButtom">
+                        <p
+                          className={
+                            fieldValue.organization.length > 0
+                              ? "fieldQuestionWhite"
+                              : "fieldQuestion"
+                          }
+                        >
+                          What's the name of your organization?
+                        </p>
+                        <input
+                          type="text"
+                          className="contactInput"
+                          placeholder="john & doe"
+                          name="organization"
+                          value={fieldValue.organization}
+                          onChange={inputsValue}
+                        />
+                      </div>
                     </div>
-                    <div className="contactFieldButtom">
-                      <p
-                        className={
-                          fieldValue.message.length > 0
-                            ? "fieldQuestionWhite"
-                            : "fieldQuestion"
-                        }
-                      >
-                        Your message
-                      </p>
-                      <input
-                        type="text"
-                        className="contactInput"
-                        placeholder="Hello Antonio, can you help me with...?"
-                        name="message"
-                        value={fieldValue.message}
-                        onChange={inputsValue}
-                      />
+                  </div>
+                  <div className="contactField">
+                    <div className="fieldWrapper">
+                      <div className="contactFieldTop">
+                        <span className="fieldNumber">04</span>
+                      </div>
+                      <div className="contactFieldButtom">
+                        <p
+                          className={
+                            fieldValue.message.length > 0
+                              ? "fieldQuestionWhite"
+                              : "fieldQuestion"
+                          }
+                        >
+                          Your message
+                        </p>
+                        <input
+                          type="text"
+                          className="contactInput"
+                          placeholder="Hello Antonio, can you help me with...?"
+                          name="message"
+                          value={fieldValue.message}
+                          onChange={inputsValue}
+                        />
 
-                      <motion.button
-                        className="sendMessageContact"
-                        onClick={sendMessage}
-                        whileHover={{ scale: 1.2 }}
-                        transition={{ type: "spring", stiffness: 500 }}
-                      >
-                        Send it
-                      </motion.button>
+                        <motion.button
+                          className="sendMessageContact"
+                          onClick={sendMessage}
+                          whileHover={{ scale: 1.2 }}
+                          transition={{ type: "spring", stiffness: 500 }}
+                        >
+                          Send it
+                        </motion.button>
+                      </div>
                     </div>
                   </div>
-                </div>
+                </form>
               </motion.div>
+
               <motion.div className="contactMeInfoRight">
                 <div className="contactDetails">
                   <h2 className="smallContactHeading">CONTACT DETAILS</h2>
@@ -196,6 +226,7 @@ const Contact = () => {
                     className="contactDetailsP"
                     whileHover={{ scale: 1.3, originX: 0, cursor: "pointer" }}
                     transition={{ type: "spring", stiffness: 300 }}
+                    name="Email address"
                     onClick={copyContactDetails}
                   >
                     antonio@gmail.com
@@ -204,6 +235,7 @@ const Contact = () => {
                     className="contactDetailsP"
                     whileHover={{ scale: 1.3, originX: 0, cursor: "pointer" }}
                     transition={{ type: "spring", stiffness: 300 }}
+                    name="Phone number"
                     onClick={copyContactDetails}
                   >
                     +385 95 7207 7121
@@ -212,6 +244,7 @@ const Contact = () => {
                     className="contactDetailsP"
                     whileHover={{ scale: 1.3, originX: 0, cursor: "pointer" }}
                     transition={{ type: "spring", stiffness: 300 }}
+                    name="Location"
                     onClick={copyContactDetails}
                   >
                     Split, Croatia
@@ -246,6 +279,7 @@ const Contact = () => {
                 </div>
               </motion.div>
             </div>
+            <SideMenuButton />
           </div>
         </div>
       ) : (

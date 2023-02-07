@@ -1,16 +1,22 @@
-import { useEffect } from "react";
 import { ContextProvider } from "./Context/Context";
-//pages
+import { ToastContainer } from "react-toastify";
+import AboutMe from "../src/pages/AboutMe";
+import Contact from "../src/pages/Contact";
+import ProjectsPage from "../src/pages/ProjectPage";
 import Home from "./pages/Home";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
-  useEffect(() => {}, []);
   return (
-    <ContextProvider>
-      <div className=".App">
+    <div className=".App">
+      <ContextProvider>
+        <AboutMe />
         <Home />
-      </div>
-    </ContextProvider>
+        <ProjectsPage />
+        <Contact />
+      </ContextProvider>
+      <ToastContainer />
+    </div>
   );
 }
 

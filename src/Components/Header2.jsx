@@ -1,31 +1,81 @@
 import Context from "../Context/Context";
 import { useContext } from "react";
-import { ReactComponent as ArrowUp } from "../assets/arrow-up.svg";
-import { motion, useAnimation } from "framer-motion";
+import { motion } from "framer-motion";
+import { useState } from "react";
 
 const Header2 = () => {
-  const { openMenu, setOpenMenu } = useContext(Context);
+  const {
+    openMenu,
+    setOpenMenu,
+    navRotateClass,
+    setNavRotateClass,
+    removeHeader,
+  } = useContext(Context);
+
+  const [animateHeaderOnce, setAnimateHeaderOnce] = useState(true);
+
+  const animateOnce = () => {
+    setAnimateHeaderOnce(false);
+  };
 
   return (
-    <motion.div
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ delay: 4.5, type: "spring", stiffness: 50 }}
-      className={`headerContainer ${openMenu ? "fixed" : ""}`}
-    >
-      <div className="header90posto">
-        <div className="logo">AV31.</div>
-        {openMenu !== true ? (
-          <div className="nav" onClick={() => setOpenMenu(!openMenu)}>
-            <ArrowUp className="arrowDownHover" />
+    <>
+      {removeHeader !== true ? (
+        <motion.div
+          initial={animateHeaderOnce ? { y: -100 } : undefined}
+          animate={{ y: 0 }}
+          transition={{
+            delay: 4.5,
+            type: "spring",
+            stiffness: 50,
+            duration: 2,
+          }}
+          onAnimationComplete={animateOnce}
+          className={`headerContainer ${openMenu ? "fixed" : ""}`}
+        >
+          <div className="header90posto">
+            <div className="logo">AV31.</div>
+            {openMenu !== true ? (
+              <div
+                className="nav"
+                onClick={() => {
+                  setOpenMenu(!openMenu);
+                  setNavRotateClass(!navRotateClass);
+                }}
+              >
+                <div className="navLine"></div>
+                <div className="navLine"></div>
+              </div>
+            ) : (
+              <div
+                className={`nav`}
+                onClick={() => {
+                  setOpenMenu(!openMenu);
+                  setNavRotateClass(!navRotateClass);
+                }}
+              >
+                <div
+                  className={`navLine ${
+                    navRotateClass === true && openMenu === true
+                      ? "rotateLinesNav"
+                      : ""
+                  }`}
+                ></div>
+                <div
+                  className={`navLine ${
+                    navRotateClass === true && openMenu === true
+                      ? "rotateLinesNav"
+                      : ""
+                  }`}
+                ></div>
+              </div>
+            )}
           </div>
-        ) : (
-          <div className="nav" onClick={() => setOpenMenu(!openMenu)}>
-            <ArrowUp className="arrowUpHover" />
-          </div>
-        )}
-      </div>
-    </motion.div>
+        </motion.div>
+      ) : (
+        <></>
+      )}
+    </>
   );
 };
 

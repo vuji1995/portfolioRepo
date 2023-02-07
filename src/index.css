@@ -54,6 +54,7 @@ body {
   align-items: center;
   justify-content: space-between;
   width: 90%;
+  margin-top: 25px;
   z-index: 5000;
 }
 
@@ -68,21 +69,53 @@ body {
 
 .nav {
   color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  position: relative;
+  height: 20px;
+  width: 20px;
+  padding: 20px;
 }
 
 .nav:hover {
   cursor: pointer;
 }
 
-.nav span {
-  margin-bottom: 0.3rem;
-  background-color: black;
+.navLine {
+  background-color: rgb(255, 255, 255);
   height: 2px;
-  width: 100%;
+  width: 30px;
   display: block;
+  transition: transform 0.3s ease;
 }
 
-/* -------------- BANNER ---------------------*/
+.navLine:nth-child(1) {
+  margin-bottom: 10px;
+  transform: rotate(0);
+}
+
+.navLine:nth-child(2) {
+  transform: rotate(0);
+}
+
+.rotateLinesNav:first-child {
+  transform: rotate(45deg);
+  margin-bottom: 0;
+  top: 50%;
+  position: absolute;
+  width: 30px;
+}
+
+.rotateLinesNav:last-child {
+  transform: rotate(-45deg);
+  top: 50%;
+  position: absolute;
+  width: 30px;
+}
+
+/*------------- BANNER ---------------------*/
 
 .bannerContainer {
   display: flex;
@@ -147,7 +180,7 @@ body {
 
 .overlay {
   background-color: rgb(9, 0, 0);
-  opacity: 0.53;
+  opacity: 0.63;
   height: 100%;
   width: 100%;
   z-index: 100;
@@ -168,7 +201,12 @@ body {
 }
 
 .case:hover .scale-img {
-  transform: scale(1.2);
+  transform: scale(1.05);
+  filter: blur(2px);
+}
+
+.case:hover .caseDetails {
+  display: block;
 }
 
 .case-image {
@@ -176,12 +214,13 @@ body {
   width: 100%;
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 
 .case-image img {
   object-fit: cover;
-  height: 100%;
-  width: 100%;
+  height: 70%;
+  width: 80%;
 }
 
 .caseDetails {
@@ -190,6 +229,11 @@ body {
   color: white;
   z-index: 200;
   left: 10%;
+  display: none;
+}
+
+.caseDetails h2 {
+  margin-bottom: 10px;
 }
 
 /*---------------- OVERLAY INTRO -----------------------------*/
@@ -321,9 +365,8 @@ body {
 }
 
 .liMenu {
-  font-size: 42px;
+  font-size: 52px;
   color: white;
-  font-family: "Josefin Sans", sans-serif;
   margin-bottom: 20px;
 }
 
@@ -573,6 +616,19 @@ body {
   color: white;
   font-family: sans-serif;
   font-weight: 400;
+  position: relative;
+}
+
+.transitionPageHeading:before {
+  content: "";
+  height: 15px;
+  width: 15px;
+  border-radius: 50%;
+  color: white;
+  background-color: white;
+  position: absolute;
+  left: -34px;
+  top: 40%;
 }
 
 /* -------------- PROJECTS PAGE  ---------------------*/
@@ -587,13 +643,19 @@ body {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  background-color: #1c1d20;
+  background-color: #ffffff;
   z-index: 1000;
-  color: white;
+  color: rgb(0, 0, 0);
+}
+
+.projectDisplay {
+  width: 1000px;
+  display: grid;
+  grid-template-columns: 1fr 8fr 1fr;
 }
 
 .singleProject {
-  width: 700px;
+  margin: 0 auto;
 }
 
 .projectName {
@@ -602,6 +664,13 @@ body {
   font-size: 32px;
   margin-top: 40px;
   margin-bottom: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.technology {
+  font-size: 20px;
 }
 
 .greyLine {
@@ -640,4 +709,300 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+.previousProject {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nextProject {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.previousProjectButton {
+  border: 1px solid rgb(0, 0, 0);
+  border-radius: 50%;
+  padding: 10px;
+  transition: transform 0.3s ease;
+}
+
+.nextProjectButton {
+  border: 1px solid rgb(0, 0, 0);
+  border-radius: 50%;
+  padding: 10px;
+  transition: transform 0.3s ease;
+}
+
+.previousProjectButton:hover,
+.nextProjectButton:hover {
+  scale: 1.2;
+  cursor: pointer;
+}
+
+/* -------------- SIDE MENU  ---------------------*/
+.sideMenuDiv {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sideMenu {
+  height: 100vh;
+  width: 36vw;
+  bottom: 0px;
+  right: 0;
+  position: fixed;
+  overflow: hidden;
+  background-color: #1c1d20;
+  z-index: 99000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  color: white;
+  border-left: 1px solid white;
+}
+
+.sideMenuContainer {
+  width: 60%;
+}
+
+.sideMenuLinkContainer {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.navigationP {
+  color: #555658;
+  font-weight: 500;
+  font-size: 14px;
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+.pUnderline {
+  height: 1px;
+  background-color: #555658;
+  width: 100%;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+.sideMenuLink {
+  font-size: 66px;
+  margin-bottom: 10px;
+  position: relative;
+}
+
+.sideMenuLink:first-child {
+  margin-top: 45px;
+}
+
+.narrow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.sideMenuButton {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: #455ce9;
+  height: 70px;
+  width: 70px;
+  color: white;
+  border: 0;
+  border-radius: 50%;
+  margin-right: 50px;
+  margin-top: 50px;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  z-index: 100000000;
+  transition: transform 0.3s ease-in-out;
+}
+
+.dot {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background-color: white;
+  position: absolute;
+  left: -40px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: none;
+}
+
+.sideMenuLink:hover {
+  cursor: pointer;
+}
+
+.sideMenuLink:hover .dot {
+  display: block;
+}
+
+.buttonLines {
+  width: 25px;
+  height: 2px;
+  background-color: white;
+}
+
+.buttonLines:nth-child(2) {
+  margin-top: 8px;
+}
+
+.sideMenuButton:hover {
+  cursor: pointer;
+  background-color: #334bd3;
+}
+
+.rotateLines:first-child {
+  transform: rotate(45deg);
+  top: 50%;
+  position: absolute;
+}
+
+.rotateLines:last-child {
+  transform: rotate(-45deg);
+  margin-top: 0;
+  top: 50%;
+  position: absolute;
+}
+
+/* ----------------------- ABOUT ME ------------------------*/
+.aboutContainer {
+  background-color: #1c1d20;
+}
+
+.aboutMe {
+  height: 60vh;
+  width: 50vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.aboutMeTimeLine {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+  width: 1000px;
+  height: 500px;
+}
+
+.imageTimeline {
+  object-fit: cover;
+}
+
+.aboutImage {
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.aboutImage img {
+  width: 80%;
+  height: 70%;
+}
+
+.aboutMeHeading {
+  margin-bottom: 50px;
+}
+
+.aboutMeheading {
+  font-size: 36px;
+}
+
+.aboutMeText {
+  font-size: 18px;
+}
+
+.socialsIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.aboutSocials {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.sliders {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-direction: column;
+  padding: 10px;
+  text-align: left;
+}
+
+.iconsBackground {
+  background-color: white;
+  height: 35px;
+  width: 35px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.iconsBackground:hover {
+  cursor: pointer;
+}
+
+.socialsContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 80%;
+}
+
+.twitterIcon,
+.facebookIcon,
+.githubIcon,
+.instagram {
+  color: black;
+}
+
+.arrowsLeftRight {
+  width: 30%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.marginTop {
+  margin-top: 10px;
+}
+
+.backIcon {
+  cursor: pointer;
+  padding: 10px;
+}
+
+.forwardIcon {
+  cursor: pointer;
+  padding: 10px;
+}
+
+.arrowsRightLeftContainer {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
