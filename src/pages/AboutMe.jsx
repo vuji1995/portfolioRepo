@@ -21,7 +21,7 @@ const AboutMe = () => {
 
   const nextSlider = () => {
     setSliderNumber((oldNumber) => {
-      if (oldNumber >= 4) {
+      if (oldNumber >= 3) {
         return 1;
       } else {
         return oldNumber + 1;
@@ -32,7 +32,7 @@ const AboutMe = () => {
   const previousSlider = () => {
     setSliderNumber((oldNumber) => {
       if (oldNumber <= 1) {
-        return 4;
+        return 3;
       } else {
         return oldNumber - 1;
       }
@@ -42,7 +42,7 @@ const AboutMe = () => {
   const [slidersData, setSlidersData] = useState([
     {
       id: 1,
-      h2: "I am Antonio, I am self thought junior frontend developer",
+      h2: "I am Antonio, I am junior frontend developer",
       image: ProgramingImg,
       p: `I build scalable websites from scratch that fit seamlessly  with design. My focus is on micro animations, transitions and  interaction. I enjoy creating complete websites from concept to implementation, thats what makes me stand out.     
        My great sense for design and my development skills enable me to create great projects.`,
@@ -51,30 +51,21 @@ const AboutMe = () => {
     },
     {
       id: 2,
-      h2: "Short biography, where, when",
-      image: Mainz,
-      imageId: 2,
-      color: "#b1a994",
-      p: "I was born in Germany, 31.01.1995. After finishing elementary school I went to Tehnical school in Split, where I enroll in the field of computer technician and mechanical engineering. After I finished middle school I entered University departmend of proffesional studies in Split. ",
-      p2: "Through my whole life I always have love for the sport and fitness. My current favorite hobbies are playing football and going to gym.",
-    },
-    {
-      id: 3,
-      h2: "More about education",
-      p: "When I enrolled in college I choose Electronics course. After 2 years I have choosed next course which was Telecomunications, because of my interest in networks, internet and network security.",
-      p2: "On 4th and 5th year of my college I choosed next chapter which was Integrated communication technologies. In this time I have learned a lot of on practical cases in networking and cyber security. But in same time I started to get interested about coding, which soon will trigger my will for learning to code.",
+      h2: "Education",
+      p: "I initially enrolled in college as an Electronics major. However, after two years, I chose Telecommunications as my major in college due to my interest in networks, the internet, and network security. ",
+      p2: "During my fourth and fifth year of college, I expanded my studies to Integrated Communication Technologies. During this time, I gained hands-on experience with networking and cybersecurity through practical case studies. Additionally, I developed a newfound interest in coding, which ultimately led me to pursue further studies in this field.",
       image: OSS,
       color: "#d8d3cd",
       imageId: 3,
     },
     {
-      id: 4,
+      id: 3,
       h2: "What I am doing now",
-      p: "Curently I am writing graduation thesis on the topic of Linux server installation with support for virtualization. Also I am working on new project which will be website for furniture company. In this project I will use new technologies like next.js and tailwind.",
+      p: "Presently, I am completing my graduation thesis on the topic of installing a Linux server with virtualization support. In addition, I am also engaged in learning new programming languages and exploring various software development technologies to enhance my skills and broaden my knowledge in the field of computer science. ",
       image: MERN,
       color: "#b1a994",
       imageId: 4,
-      p2: "In future I would like to learn technologies like, MongoDB, Express.js and Node.js to become fullstack programmer. Also I would like to try work with AWS in future.",
+      p2: "My aim is to expand my skills by learning technologies such as MongoDB, Express.js, and Node.js, with the goal of becoming a full-stack programmer.",
     },
   ]);
 
@@ -144,7 +135,7 @@ const AboutMe = () => {
                         </div>
                         <div className="slidesNumbers">
                           <p>
-                            <span>{sliderNumber}</span>/<span>4</span>
+                            <span>{sliderNumber}</span>/<span>3</span>
                           </p>
                         </div>
                         <div className="forwardIcon" onClick={nextSlider}>

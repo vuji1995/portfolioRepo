@@ -8,6 +8,7 @@ import NavigationMenu from "../Components/NavigationMenu";
 import SideMenu from "../Components/SideMenu";
 import TransitionPage from "../Components/TransitionPage";
 import { useEffect, useState, useContext } from "react";
+import { toast } from "react-toastify";
 
 const tl = gsap.timeline();
 
@@ -40,6 +41,14 @@ const Home = () => {
   useEffect(() => {
     homeAnimation(completeAnimation);
   }, [completeAnimation]);
+
+  const [showWarning, setShowWarning] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setShowWarning(false);
+    }, 5000);
+  }, []);
 
   const { openMenu } = useContext(Context);
 

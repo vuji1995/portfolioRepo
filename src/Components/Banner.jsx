@@ -3,6 +3,7 @@ import { ReactComponent as ArrowRight } from "../assets/arrow-right.svg";
 import Header2 from "./Header2";
 import Context from "../Context/Context";
 import LoadingDots from "../Components/LoadingDots";
+import CV from "../assets/CV.pdf";
 
 const Banner = () => {
   //context data
@@ -22,7 +23,9 @@ const Banner = () => {
           </div>
           <div className="bannerMoreAboutUs">
             <p>Download CV</p>
-            <ArrowRight className="arrowRightHover" />
+            <a href={CV} download="CV.pdf" className="aDownloadCV">
+              <ArrowRight className="arrowRightHover" />
+            </a>
           </div>
         </div>
       </div>

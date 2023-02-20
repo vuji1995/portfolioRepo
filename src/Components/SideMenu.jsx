@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState, useEffect } from "react";
 import Context from "../Context/Context";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
@@ -14,6 +14,18 @@ const SideMenu = () => {
     goToSocialMedia,
   } = useContext(Context);
 
+  const [MenuWidth, setMenuWidth] = useState(
+    window.innerWidth <= 920 ? "45vw" : "36vw"
+  );
+
+  useEffect(() => {
+    function handleWindowResize() {
+      setMenuWidth(window.innerWidth <= 920 ? "50vw" : "36vw");
+    }
+    window.addEventListener("resize", handleWindowResize);
+    return () => window.removeEventListener("resize", handleWindowResize);
+  }, []);
+
   return (
     <>
       {showSideMenu === true ? (
@@ -21,7 +33,7 @@ const SideMenu = () => {
           <motion.div
             className="sideMenu"
             initial={{ width: 0, borderRadius: "60%" }}
-            animate={{ width: "36vw", borderRadius: 0 }}
+            animate={{ width: `${MenuWidth}`, borderRadius: 0 }}
             transition={{ type: "spring", stiffness: 50 }}
           >
             <div className="sideMenuContainer">
@@ -62,7 +74,7 @@ const SideMenu = () => {
 
                 <span className="sideMenuLink" onClick={showAboutPage}>
                   <div className="dot"></div>
-                  About me
+                  About
                 </span>
 
                 <span className="sideMenuLink" onClick={showContactPage}>

@@ -2,6 +2,7 @@ import Context from "../Context/Context";
 import { useContext } from "react";
 import { motion } from "framer-motion";
 import { useState } from "react";
+import { toast } from "react-toastify";
 
 const Header2 = () => {
   const {
@@ -22,8 +23,8 @@ const Header2 = () => {
     <>
       {removeHeader !== true ? (
         <motion.div
-          initial={animateHeaderOnce ? { y: -100 } : undefined}
-          animate={{ y: 0 }}
+          initial={animateHeaderOnce ? { y: -100, opacity: 0 } : undefined}
+          animate={{ y: 0, opacity: 1 }}
           transition={{
             delay: 4.5,
             type: "spring",

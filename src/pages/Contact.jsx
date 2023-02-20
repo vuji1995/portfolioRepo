@@ -60,12 +60,14 @@ const Contact = () => {
 
     if (!error) {
       toast.success(`Email has been sent!`);
-      setFieldValue({
-        name: "",
-        message: "",
-        email: "",
-        organization: "",
-      });
+      setTimeout(() => {
+        setFieldValue({
+          name: "",
+          message: "",
+          email: "",
+          organization: "",
+        });
+      }, 2000);
     }
   };
 
@@ -96,7 +98,7 @@ const Contact = () => {
       {contactOpened ? (
         <div className="componentDiv">
           <div className="contactMeCont">
-            <div className="contactFormKurcina">
+            <div className="contactFormContainer">
               <motion.div className="contactMeFormLeft">
                 <div className="contactFormLeftHeading">
                   Let's start a <br />
@@ -145,7 +147,7 @@ const Contact = () => {
                           What is your email?
                         </p>
                         <input
-                          type="text"
+                          type="email"
                           className="contactInput"
                           placeholder="john@doe.com"
                           name="email"
@@ -199,7 +201,7 @@ const Contact = () => {
                         <input
                           type="text"
                           className="contactInput"
-                          placeholder="Hello Antonio, can you help me with...?"
+                          placeholder="Hello Antonio..."
                           name="message"
                           value={fieldValue.message}
                           onChange={inputsValue}
@@ -229,7 +231,7 @@ const Contact = () => {
                     name="Email address"
                     onClick={copyContactDetails}
                   >
-                    antonio@gmail.com
+                    antonio.vujicevic31@gmail.com
                   </motion.p>
                   <motion.p
                     className="contactDetailsP"
