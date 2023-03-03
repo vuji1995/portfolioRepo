@@ -3,7 +3,6 @@ import SideMenuButton from "../Components/SideMenuButton";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ProgramingImg from "../assets/programing.jpg";
-import Mainz from "../assets/mainzPicture.jpg";
 import OSS from "../assets/oss.jpg";
 import MERN from "../assets/MERN.png";
 import FacebookIcon from "@mui/icons-material/Facebook";

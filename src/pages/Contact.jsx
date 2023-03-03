@@ -231,7 +231,7 @@ const Contact = () => {
                     name="Email address"
                     onClick={copyContactDetails}
                   >
-                    antonio.vujicevic31@gmail.com
+                    antonio.vujicevic@gmail.com
                   </motion.p>
                   <motion.p
                     className="contactDetailsP"
