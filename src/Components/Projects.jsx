@@ -23,11 +23,11 @@ const Projects = () => {
     },
     {
       id: 3,
-      subtitle: "Simple feedback app on JSON server",
+      subtitle: "Simple feedback app working on local storage",
       title: "Feedback App",
       color: "#7e7e7e",
       img: FeedbackApp,
-      page: `https://feedback-app-flame.vercel.app/`,
+      page: `https://feedback-app-local-storage.vercel.app/`,
     },
   ];
 

@@ -33,12 +33,12 @@ const ProjectsPage = () => {
     },
     {
       name: "Feedback App",
-      info: "The Feedback App is a platform designed to gather and share customer opinions and experiences. Users can easily add their own review, including a rating and comment, and view other reviews as well. With the ability to edit their review, users have complete control over their feedback. The app's user-friendly interface and seamless functionality make it easy for customers to share their thoughts and opinions, while providing valuable insights for businesses. Whether you're looking to improve your customer experience or gather feedback for your next project, the Feedback App is the solution you need. This app requires starting json server!",
+      info: "The Feedback App is a platform designed to gather and share customer opinions and experiences. Users can easily add their own review, including a rating and comment, and view other reviews as well. With the ability to edit their review, users have complete control over their feedback. The app's user-friendly interface and seamless functionality make it easy for customers to share their thoughts and opinions, while providing valuable insights for businesses. Whether you're looking to improve your customer experience or gather feedback for your next project, the Feedback App is the solution you need.",
       color: `#202142`,
       image: FeedbackApp,
       projectNumber: 3,
-      page: `https://feedback-app-flame.vercel.app/`,
-      githubLink: `https://github.com/vuji1995/feedbackApp`,
+      page: `https://feedback-app-local-storage.vercel.app/`,
+      githubLink: `https://github.com/vuji1995/feedback-app-local-storage`,
     },
   ]);
 

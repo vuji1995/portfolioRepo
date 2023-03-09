@@ -240,7 +240,7 @@ const Contact = () => {
                     name="Phone number"
                     onClick={copyContactDetails}
                   >
-                    +385 95 7207 7121
+                    +385 95 7206 712
                   </motion.p>
                   <motion.p
                     className="contactDetailsP"
